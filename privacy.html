@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Polityka prywatności aplikacji Centrum Informacji.">
+  <title>Polityka prywatności — Centrum Informacji</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="site-header">
+    <nav class="nav" aria-label="Główna nawigacja">
+      <a class="brand" href="index.html">Centrum Informacji</a>
+      <div class="nav-links"><a href="terms.html">Warunki korzystania</a></div>
+    </nav>
+    <div class="hero"><h1>Polityka prywatności</h1><p>Informacja o danych używanych przez prywatny dashboard domowy.</p></div>
+  </header>
+
+  <main class="content">
+    <article class="prose">
+      <p><strong>Wersja dokumentu: 1.0</strong></p>
+      <div class="notice">Centrum Informacji jest prywatną aplikacją domową działającą na lokalnym backendzie. Ta strona nie zbiera danych odwiedzających i nie udostępnia żadnych danych kalendarza.</div>
+
+      <h2>1. Jakie dane są pobierane z Google?</h2>
+      <p>Po udzieleniu zgody aplikacja korzysta z Google Calendar API z zakresem <code>https://www.googleapis.com/auth/calendar.readonly</code>. Odczytuje z głównego kalendarza wydarzenia z wybranego przedziału czasu, w tym:</p>
+      <ul>
+        <li>tytuł wydarzenia,</li>
+        <li>datę i godzinę rozpoczęcia oraz zakończenia albo informację o wydarzeniu całodniowym,</li>
+        <li>opis i lokalizację, jeśli są dostępne,</li>
+        <li>identyfikator wydarzenia oraz jego status techniczny.</li>
+      </ul>
+      <p>Zakres odczytu jest ograniczony konfiguracją aplikacji i nie obejmuje zapisu ani modyfikacji kalendarza. Aplikacja nie prosi o dostęp do poczty, kontaktów, plików Dysku ani innych usług Google.</p>
+
+      <h2>2. W jakim celu dane są przetwarzane?</h2>
+      <p>Dane są wykorzystywane wyłącznie do odczytu wydarzeń i wyświetlenia ich w prywatnym dashboardzie Centrum Informacji. Nie są wykorzystywane do reklam, profilowania, sprzedaży, oceny użytkownika ani niezwiązanych analiz.</p>
+
+      <h2>3. Gdzie i jak są przetwarzane?</h2>
+      <p>Żądanie do Google Calendar wykonuje backend działający lokalnie na komputerze Teclast N20 Pro. Odpowiedź jest normalizowana w pamięci i zwracana klientowi aplikacji. Obecna integracja Google Calendar nie zapisuje pobranych wydarzeń do SQLite.</p>
+      <p>Poświadczenia OAuth są przechowywane lokalnie w pliku konfiguracyjnym poza repozytorium: osobno przechowywany jest plik klienta OAuth oraz plik zapisanego tokenu. Przy odświeżaniu token jest zapisywany atomowo, a nowy plik otrzymuje uprawnienia systemowe ograniczające dostęp do właściciela procesu (`0600`).</p>
+
+      <h2>4. Zabezpieczenia i przechowywanie</h2>
+      <p>Tokeny i konfiguracja OAuth są wykluczone z repozytorium. Nie są umieszczane w tej stronie, w JavaScript, w adresach URL ani w publicznych zasobach GitHub Pages. Logi aplikacji nie zawierają tokenów ani treści wydarzeń; błędy Google są rejestrowane wyłącznie jako ogólne informacje techniczne.</p>
+      <p>Bezpieczeństwo lokalnego komputera, systemu plików, konta Google i sieci domowej pozostaje odpowiedzialnością administratora instancji.</p>
+
+      <h2>5. Usuwanie dostępu i danych</h2>
+      <p>Aktualna aplikacja nie posiada osobnego panelu ani endpointu do revokacji dostępu. Aby zakończyć dostęp, administrator powinien odwołać uprawnienie „Centrum Informacji” w ustawieniach konta Google oraz usunąć lokalny plik tokenu OAuth. Plik konfiguracji klienta OAuth również można usunąć, jeśli nie jest już potrzebny.</p>
+      <p>Ponieważ wydarzenia nie są przechowywane przez tę integrację w bazie aplikacji, usunięcie tokenu usuwa lokalną możliwość kolejnego odczytu. Dane pozostające na koncie Google podlegają zasadom Google.</p>
+
+      <h2>6. Google API Services User Data Policy</h2>
+      <p>Aplikacja korzysta z danych użytkownika Google zgodnie z Google API Services User Data Policy, w tym z zasadą Limited Use:</p>
+      <ul>
+        <li>używa danych wyłącznie do funkcji opisanej użytkownikowi — odczytu i prezentacji wydarzeń,</li>
+        <li>nie sprzedaje danych, nie używa ich do reklam ani do kredytowania,</li>
+        <li>nie przekazuje danych innym podmiotom poza zakresem niezbędnym do działania Google API i lokalnego backendu,</li>
+        <li>nie wykorzystuje danych do celów niezwiązanych z funkcją kalendarza,</li>
+        <li>nie używa danych kalendarza do trenowania modeli ani do generowania niezwiązanych profili.</li>
+      </ul>
+
+      <h2>7. Kontakt</h2>
+      <p>W sprawach dotyczących tej prywatnej instancji należy skontaktować się z jej administratorem. Strona jest dokumentem informacyjnym dla użytkowników zgody OAuth; nie prowadzi formularza kontaktowego ani nie gromadzi zgłoszeń.</p>
+      <p><a href="index.html">← Wróć na stronę główną</a></p>
+    </article>
+  </main>
+
+  <footer class="footer"><div class="footer-inner">Centrum Informacji · polityka prywatności</div></footer>
+</body>
+</html>
